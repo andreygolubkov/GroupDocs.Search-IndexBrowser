@@ -1,5 +1,6 @@
 ﻿using GroupDocs.Search.Common;
 using GroupDocs.Search.Highlighters;
+using GroupDocs.Search.Options;
 using GroupDocs.Search.Results;
 using System;
 using System.Globalization;
@@ -47,8 +48,8 @@ namespace GroupDocs.Search.IndexBrowser.ViewModels
         {
             get
             {
-                var adapter = new StringOutputAdapter();
-                var highlighter = new HtmlHighlighter(adapter);
+                var adapter = new StringOutputAdapter(OutputFormat.Html);
+                var highlighter = new DocumentHighlighter(adapter);
                 index.Index.Highlight(result, highlighter);
                 var text = adapter.GetResult();
                 return text;
@@ -99,9 +100,12 @@ namespace GroupDocs.Search.IndexBrowser.ViewModels
                     tempFileName = Path.Combine(folder, GeneratedHtmlFileName);
                     await Task.Factory.StartNew(() =>
                     {
-                        var adapter = new FileOutputAdapter(tempFileName);
-                        var highlighter = new HtmlHighlighter(adapter);
+                        var adapter = new FileOutputAdapter(OutputFormat.Html, tempFileName);
+                        var highlighter = new DocumentHighlighter(adapter);
                         index.Index.Highlight(result, highlighter);
+                        var text = File.ReadAllText(tempFileName);
+                        text = text.Replace(": rgba(255, 216, 0, 1);", ":LightGreen");
+                        File.WriteAllText(tempFileName, text);
                     });
                 }
                 catch (Exception ex)

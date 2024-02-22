@@ -1,7 +1,6 @@
 ﻿using GroupDocs.Search.IndexBrowser.Utils;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace GroupDocs.Search.IndexBrowser.ViewModels
 {

@@ -1,4 +1,5 @@
 ﻿using GroupDocs.Search.Common;
+using GroupDocs.Search.Options;
 using GroupDocs.Search.Results;
 using System;
 using System.IO;
@@ -34,7 +35,7 @@ namespace GroupDocs.Search.IndexBrowser.ViewModels
                     tempFileName = Path.Combine(folder, GeneratedHtmlFileName);
                     await Task.Factory.StartNew(() =>
                     {
-                        var adapter = new FileOutputAdapter(tempFileName);
+                        var adapter = new FileOutputAdapter(OutputFormat.Html, tempFileName);
                         index.GetDocumentText(documentInfo, adapter);
                     });
                 }

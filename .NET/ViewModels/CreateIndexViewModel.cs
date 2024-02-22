@@ -13,9 +13,7 @@ namespace GroupDocs.Search.IndexBrowser.ViewModels
         private string folder;
         private bool inMemoryIndex;
         private bool useStopWords = true;
-        private bool useRawTextExtraction;
         private bool useCharacterReplacements;
-        private bool autoDetectEncoding;
         private bool cacheDocumentText = true;
         private readonly ObservableCollection<Compression> textCompressions;
         private Compression textCompression = Compression.High;
@@ -97,22 +95,10 @@ namespace GroupDocs.Search.IndexBrowser.ViewModels
             set { UpdateProperty(ref useStopWords, value); }
         }
 
-        public bool UseRawTextExtraction
-        {
-            get { return useRawTextExtraction; }
-            set { UpdateProperty(ref useRawTextExtraction, value); }
-        }
-
         public bool UseCharacterReplacements
         {
             get { return useCharacterReplacements; }
             set { UpdateProperty(ref useCharacterReplacements, value); }
-        }
-
-        public bool AutoDetectEncoding
-        {
-            get { return autoDetectEncoding; }
-            set { UpdateProperty(ref autoDetectEncoding, value); }
         }
 
         public bool CacheDocumentText
@@ -146,10 +132,8 @@ namespace GroupDocs.Search.IndexBrowser.ViewModels
         private Index CreateIndex()
         {
             var indexSettings = new IndexSettings();
-            indexSettings.UseRawTextExtraction = false;
             indexSettings.UseStopWords = UseStopWords;
             indexSettings.IndexType = IndexType;
-            indexSettings.UseRawTextExtraction = UseRawTextExtraction;
             if (CacheDocumentText)
             {
                 indexSettings.TextStorageSettings = new TextStorageSettings(TextCompression);

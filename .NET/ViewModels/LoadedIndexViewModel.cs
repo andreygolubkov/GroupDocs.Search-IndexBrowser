@@ -53,8 +53,6 @@ namespace GroupDocs.Search.IndexBrowser.ViewModels
                 new IndexPropertyViewModel("Max indexing reports", () => index.IndexSettings.MaxIndexingReportCount.ToString()),
                 new IndexPropertyViewModel("Max search reports", () => index.IndexSettings.MaxSearchReportCount.ToString()),
                 new IndexPropertyViewModel("Use character replacements", () => index.IndexSettings.UseCharacterReplacements.ToString()),
-                new IndexPropertyViewModel("Auto detect encoding", () => index.IndexSettings.AutoDetectEncoding.ToString()),
-                new IndexPropertyViewModel("Use raw text extraction", () => index.IndexSettings.UseRawTextExtraction.ToString()),
                 new IndexPropertyViewModel("Document filter", () => index.IndexSettings.DocumentFilter == null ? "<empty>" : index.IndexSettings.DocumentFilter.ToString()),
                 new IndexPropertyViewModel("Text storage compression", () => index.IndexSettings.TextStorageSettings == null ? "<no storage>" : index.IndexSettings.TextStorageSettings.Compression.ToString()),
                 new IndexPropertyViewModel("Index type", () => index.IndexSettings.IndexType.ToString()),

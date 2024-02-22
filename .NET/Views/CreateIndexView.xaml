@@ -31,14 +31,8 @@
             <CheckBox Content="Use stop words"
                       IsChecked="{Binding UseStopWords}" />
 
-            <CheckBox Content="Use raw text extraction"
-                      IsChecked="{Binding UseRawTextExtraction}" />
-
             <CheckBox Content="Use character replacements"
                       IsChecked="{Binding UseCharacterReplacements}" />
-
-            <CheckBox Content="Auto detect encoding"
-                      IsChecked="{Binding AutoDetectEncoding}" />
 
             <DockPanel>
                 <CheckBox Content="Cache document text with compression: "
