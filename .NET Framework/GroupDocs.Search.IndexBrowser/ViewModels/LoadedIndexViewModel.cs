@@ -270,6 +270,7 @@ namespace GroupDocs.Search.IndexBrowser.ViewModels
             index.Events.ErrorOccurred += OnIndexErrorOccurred;
             index.Events.OperationFinished += OnIndexOperationFinished;
             index.Events.OperationProgressChanged += OnIndexOperationProgressChanged;
+            index.Events.OptimizationProgressChanged += OnIndexOptimizationProgressChanged;
             index.Events.StatusChanged += OnIndexStatusChanged;
         }
 
@@ -278,6 +279,7 @@ namespace GroupDocs.Search.IndexBrowser.ViewModels
             index.Events.ErrorOccurred -= OnIndexErrorOccurred;
             index.Events.OperationFinished -= OnIndexOperationFinished;
             index.Events.OperationProgressChanged -= OnIndexOperationProgressChanged;
+            index.Events.OptimizationProgressChanged -= OnIndexOptimizationProgressChanged;
             index.Events.StatusChanged -= OnIndexStatusChanged;
         }
 
@@ -365,6 +367,14 @@ namespace GroupDocs.Search.IndexBrowser.ViewModels
         }
 
         private void OnIndexOperationProgressChanged(object sender, OperationProgressEventArgs e)
+        {
+            dispatcher.Invoke(() =>
+            {
+                ProgressPercentage = e.ProgressPercentage;
+            });
+        }
+
+        private void OnIndexOptimizationProgressChanged(object sender, OptimizationProgressEventArgs e)
         {
             dispatcher.Invoke(() =>
             {
